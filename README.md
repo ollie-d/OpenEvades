@@ -30,5 +30,5 @@ This has been created in order to use the gameplay of Evades.io for scientific e
 * Sprites can be altered to display alternate colors and icons
 
 ### Videos and GIFs
-[09Oct2020] Death now works: https://www.youtube.com/watch?v=mnVrES_Lws0&feature=youtu.be
+[09Oct2020] Death now works: https://www.youtube.com/watch?v=mnVrES_Lws0&feature=youtu.be <br>
 [08Oct2020] Initial gameplay: https://www.youtube.com/watch?v=qlSxNIk5KDE&feature=youtu.be
