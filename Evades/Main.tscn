@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/gridBackground.png" type="Texture" id=3]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://SafeZone.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4096, 0, 0, 0, 0, 0, 4096, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2048, 360 )
+texture = ExtResource( 3 )
+
+[node name="LeftSafeZone" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+
+[node name="RightSafeZone" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3600, 0 )
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 352 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="EnemyContainer" type="Node" parent="."]
+
+[node name="Enemy1" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1200, 360 )
+
+[node name="Enemy23" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1200, 360 )
+
+[node name="Enemy2" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 960, 360 )
+
+[node name="Enemy3" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1440, 360 )
+
+[node name="Enemy4" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1680, 360 )
+
+[node name="Enemy5" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1920, 360 )
+
+[node name="Enemy6" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2160, 360 )
+
+[node name="Enemy7" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2400, 360 )
+
+[node name="Enemy8" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2640, 360 )
+
+[node name="Enemy9" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2880, 360 )
+
+[node name="Enemy10" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 3120, 360 )
+
+[node name="Enemy11" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 3360, 360 )
+
+[node name="Enemy12" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1200, 360 )
+
+[node name="Enemy13" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 720, 360 )
+
+[node name="Enemy24" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 720, 360 )
+
+[node name="Enemy14" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1440, 360 )
+
+[node name="Enemy15" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1680, 360 )
+
+[node name="Enemy16" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 1920, 360 )
+
+[node name="Enemy17" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2160, 360 )
+
+[node name="Enemy18" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2400, 360 )
+
+[node name="Enemy19" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2640, 360 )
+
+[node name="Enemy20" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 2880, 360 )
+
+[node name="Enemy21" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 3120, 360 )
+
+[node name="Enemy22" parent="EnemyContainer" instance=ExtResource( 4 )]
+position = Vector2( 3360, 360 )
+
+[node name="TopWall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -16 )
+scale = Vector2( 512, 2 )
+
+[node name="BottomWall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 720 )
+scale = Vector2( 512, 2 )
+
+[node name="LeftWall" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, -16 )
+scale = Vector2( 2, 94 )
+
+[node name="RightWall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4080, -8 )
+scale = Vector2( 2, 92 )
