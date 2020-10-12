@@ -7,6 +7,7 @@ export var speed = 350;
 func _ready():
 	randomize()
 	velocity = Vector2(rand_range(0, 1), rand_range(0, 1))
+	$EnemyArea.name = "Enemy"
 
 func _physics_process(delta):
 	velocity = velocity.normalized() * speed
