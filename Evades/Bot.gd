@@ -10,8 +10,22 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-		move_and_slide(velocity) 
-
+	var space_state = get_world_2d().direct_space_state
+	var result
+	var max_vector = Vector2(0, 0)
+	var vector = Vector2(0, 0)
+	if alive:
+		for r in range(0, 361):
+			result = space_state.intersect_ray(self.position, Vector2(0, 8000).rotated(deg2rad(r)), [self], 0b00000000000000001001)
+			$Line2D.points[0] = self.position
+			$Line2D.points[1] = result.position
+			#print(result)
+			vector = result.position - self.position
+			if max_vector.length() < vector.length():
+				max_vector = vector
+		velocity = max_vector.normalized() * speed
+		move_and_slide(velocity)
+	
 func kill():
 	if alive:
 		alive = false;
