@@ -18,6 +18,7 @@ func _ready():
 	var children = $EnemyContainer.get_children()
 	var players  = $PlayerContainer.get_children()
 	
+	"""
 	for player in players:
 		player.add_collision_exception_with($LeftSafeZone)
 		player.add_collision_exception_with($RightSafeZone)
@@ -32,7 +33,8 @@ func _ready():
 			if child != child_:
 				child.add_collision_exception_with(child_)
 	var total_time = OS.get_ticks_msec() - time_before
-	print("Time taken: " + str(total_time))
+	print('Time taken: ' + str(total_time))
+	"""
 
 func _process(_delta):
 	if Debug:
@@ -41,8 +43,11 @@ func _process(_delta):
 				$PlayerContainer/Player.revive()
 				
 func _physics_process(delta):
-	# Move bot
-	if $PlayerContainer/Bot0.alive:
-		$PlayerContainer/Bot0.velocity = $PlayerContainer/Player.velocity
-	else:
-		$PlayerContainer/Bot0.velocity = Vector2()
+	pass
+#	# Move bot
+#	if $PlayerContainer/Bot0.alive:
+#		$PlayerContainer/Bot0.velocity = $PlayerContainer/Player.velocity
+#	else:
+#		$PlayerContainer/Bot0.velocity = Vector2()
+	
+	# Use raycasting to determine path for bot

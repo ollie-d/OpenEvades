@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SafeZone.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 240, 360 )
 
 [node name="SafeZone" type="StaticBody2D"]
 position = Vector2( -240, -360 )
+collision_layer = 2147483650
+collision_mask = 2147483656
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }

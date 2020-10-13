@@ -22,17 +22,21 @@ texture = ExtResource( 3 )
 
 [node name="LeftSafeZone" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, 0 )
+collision_mask = 2147483648
 
 [node name="RightSafeZone" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3600, 0 )
+collision_mask = 2147483648
 
 [node name="PlayerContainer" type="Node" parent="."]
 
 [node name="Bot0" parent="PlayerContainer" instance=ExtResource( 7 )]
 position = Vector2( 316.177, 349.813 )
+collision_mask = 2147483649
 
 [node name="Player" parent="PlayerContainer" instance=ExtResource( 1 )]
 position = Vector2( 416, 352 )
+collision_mask = 1
 
 [node name="Camera2D2" type="Camera2D" parent="PlayerContainer/Player"]
 current = true
@@ -117,15 +121,23 @@ position = Vector2( 3360, 360 )
 [node name="TopWall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -16 )
 scale = Vector2( 512, 2 )
+collision_layer = 2147483649
+collision_mask = 0
 
 [node name="BottomWall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 720 )
 scale = Vector2( 512, 2 )
+collision_layer = 2147483649
+collision_mask = 0
 
 [node name="LeftWall" parent="." instance=ExtResource( 2 )]
 position = Vector2( -16, -16 )
 scale = Vector2( 2, 94 )
+collision_layer = 2147483649
+collision_mask = 0
 
 [node name="RightWall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 4080, -8 )
 scale = Vector2( 2, 92 )
+collision_layer = 2147483649
+collision_mask = 0

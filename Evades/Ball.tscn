@@ -17,6 +17,7 @@ font_data = ExtResource( 3 )
 radius = 37.0
 
 [node name="Ball" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

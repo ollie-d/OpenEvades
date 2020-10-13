@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "SafeZone",
+"language": "GDScript",
+"path": "res://SafeZone.gd"
+} ]
 _global_script_class_icons={
-
+"SafeZone": ""
 }
 
 [application]
@@ -58,7 +63,11 @@ ui_down={
 [layer_names]
 
 2d_render/layer_1="wall"
+2d_physics/layer_1="walls"
 2d_render/layer_2="players"
+2d_physics/layer_2="safe_zone"
+2d_physics/layer_3="players"
+2d_physics/layer_4="enemies"
 
 [rendering]
 

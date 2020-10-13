@@ -11,6 +11,8 @@ radius = 32.0
 
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 0, -0.31498 )
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
