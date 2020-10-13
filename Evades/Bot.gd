@@ -10,19 +10,6 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-	if alive:
-		velocity = Vector2()
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += 1
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= 1
-		if Input.is_action_pressed("ui_down"):
-			velocity.y += 1
-		if Input.is_action_pressed("ui_up"):
-			velocity.y -= 1
-		if velocity.length() > 0:
-			velocity = velocity.normalized() * speed
-		# warning-ignore:return_value_discarded
 		move_and_slide(velocity) 
 
 func kill():
@@ -46,6 +33,7 @@ func revive():
 			$DeathTimer.stop()
 
 func hit(body):
+	print(body.name)
 	if body.name == "Enemy":
 		kill()
 	elif body.name == "BallArea":
