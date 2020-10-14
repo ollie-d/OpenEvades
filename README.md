@@ -1,7 +1,7 @@
 # OpenEvades
 ## An open-source partial implementation of Evades.io
 
-This has been created in order to use the gameplay of Evades.io for scientific experiments. The public implementations posted on this repository may or may not be the most up-to-date version used for experimentants. The goal is to use the relatively simplistic gamespace of Evades to study complex agent interactions. This is being made public early on in development in case anybody else wants to develop similar experiments.
+This has been created in order to use the gameplay of Evades.io for scientific experiments. The public implementations posted on this repository may or may not be the most up-to-date version used for experiments. The goal is to use the relatively simplistic gamespace of Evades to study complex agent interactions. This is being made public early on in development in case anybody else wants to develop similar experiments.
 
 ### Important Notes:
 * This implementation is written in GDScript (for the Godot engine)

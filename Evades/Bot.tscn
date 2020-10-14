@@ -24,10 +24,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( 100, 100, 0, 0 )
-default_color = Color( 0.00784314, 1, 0, 1 )
-
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
@@ -56,6 +52,8 @@ __meta__ = {
 }
 
 [node name="BallArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BallArea"]
 shape = SubResource( 3 )
