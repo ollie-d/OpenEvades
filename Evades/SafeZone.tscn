@@ -8,7 +8,7 @@ extents = Vector2( 240, 360 )
 [node name="SafeZone" type="StaticBody2D"]
 position = Vector2( -240, -360 )
 collision_layer = 2147483650
-collision_mask = 2147483656
+collision_mask = 2147483648
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
