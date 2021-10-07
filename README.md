@@ -20,12 +20,12 @@ This has been created in order to use the gameplay of Evades.io for scientific e
 * When the player is struck by the enemy they die
 * When the player dies, collision and control are disabled
 * When the player dies, a visible timer decrements to denote revival time
-
-### Future Features
-* Players can enter the next level in the right save zone
 * AI agents will control a player-like entity
 * When a player or agent dies, they can be revived
 * Revival consists of a non-enemy entity entering the dead entity's area
+
+### Future Features
+* Players can enter the next level in the right save zone
 * Artificial agents can have a variety of behaviors
 * Sprites can be altered to display alternate colors and icons
 
