@@ -42,7 +42,7 @@ vL = 0.00
 vR = 0.00
 
 # Timestep delta to run control and simulation at
-dt = 0.1
+dt = 0.05#0.1
 STEPSAHEADTOPLAN = 10
 TAU = dt * STEPSAHEADTOPLAN
 
