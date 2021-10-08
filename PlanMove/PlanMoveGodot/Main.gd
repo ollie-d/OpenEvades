@@ -75,20 +75,37 @@ var pathstodraw = []
 func _ready():
 	# barrier contents are (bx, by, visibilitymask)
 	# Generate some initial random barriers
+	rng.randomize()
 	for i in range(20):
 			var bx = rng.randf_range(PLAYFIELDCORNERS[0], PLAYFIELDCORNERS[2]-1)
 			var by = rng.randf_range(PLAYFIELDCORNERS[1], PLAYFIELDCORNERS[3]-1)
 			var vx = rng.randfn(0.0, BARRIERVELOCITYRANGE)
 			var vy = rng.randfn(0.0, BARRIERVELOCITYRANGE)
-			var barrier = [bx, by, vx, vy]
+			#var barrier = [bx, by, vx, vy]
+			var barrier = preload("res://Barrier.tscn").instance()
+			barrier.init(bx, by, vx, vy, BARRIERRADIUS)
+			add_child(barrier)
 			barriers.append(barrier)
-	rng.randomize()
+			print(barrier.bx)
 	targetindex = rng.randi_range(0, len(barriers)-1) # inclusive
+	print(get_children())
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	# Barrier update
+	for i in range(len(barriers)):
+		var barrier = barriers[i]
+		barrier.position = Vector2(int(u0 + k * barrier.bx), int(v0 - k * barrier.by))
+		#barrier.position = Vector2(rng.randi_range(30, 200), rng.randi_range(30, 200))
+		#barrier.position.x = int(u0 + k * barrier.bx)
+		#barrier.position.y = int(v0 - k * barrier.by)
+		if i == targetindex:
+			barrier.get_child(0).modulate = Color(1, 0, 0)
+		else:
+			barrier.get_child(0).modulate = Color(0, 0, 1)
+	#pygame.draw.circle(screen, bcol, (int(u0 + k * barrier[0]), int(v0 - k * barrier[1])), int(k * BARRIERRADIUS), 0)
 
 
 # Function to predict new robot position based on current pose and velocity controls
@@ -172,3 +189,5 @@ func calculateClosestObstacleDistance(x, y):
 			if (dist < closestdist):
 				closestdist = dist
 	return closestdist
+
+
