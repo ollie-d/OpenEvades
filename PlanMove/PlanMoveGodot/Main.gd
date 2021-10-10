@@ -40,9 +40,9 @@ var vL := 0.00
 var vR := 0.00
 
 # Timestep delta to run control and simulation at
-var dt := 0.05 # Set this to probably 1/60 ? Make sure step constant on all fs
+var dt = float(1)/60 # Set this to probably 1/60 ? Make sure step constant on all fs
 var STEPSAHEADTOPLAN := 10
-var tau := dt * STEPSAHEADTOPLAN # Keyword TAU equivalent?
+var tau = dt * STEPSAHEADTOPLAN # Keyword TAU equivalent?
 
 # Barrier (obstacle) locations
 var barriers = []
@@ -66,10 +66,12 @@ var grey := Color(70,70,70)
 var k := 160 # pixels per metre for graphics
 
 # Screen centre will correspond to (x, y) = (0, 0)
-var u0 := WIDTH / 2
+var u0 := WIDTH / 2    # Integer division in GDScript
 var v0 := HEIGHT / 2
 
 var pathstodraw = []
+
+var goflag = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,26 +88,34 @@ func _ready():
 			barrier.init(bx, by, vx, vy, BARRIERRADIUS)
 			add_child(barrier)
 			barriers.append(barrier)
-			print(barrier.bx)
 	targetindex = rng.randi_range(0, len(barriers)-1) # inclusive
-	print(get_children())
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# Barrier update
+	locationhistory.append([x, y])
+	
+	# Planning
+	# We want to find the best benefit where we have a positive component for closeness to target,
+	# and a negative component for closeness to obstacles, for each of a choice of possible actions
+	var bestBenefit := -100000
+	var FORWARDWEIGHT := 12
+	var OBSTACLEWEIGHT := 6666
+	
+	# Deep copy
+	var barrierscopy = barriers.duplicate(true)
+	
+	for i in range(STEPSAHEADTOPLAN):
+		moveBarriers(dt)
+	
+	# Draw barriers
 	for i in range(len(barriers)):
 		var barrier = barriers[i]
 		barrier.position = Vector2(int(u0 + k * barrier.bx), int(v0 - k * barrier.by))
-		#barrier.position = Vector2(rng.randi_range(30, 200), rng.randi_range(30, 200))
-		#barrier.position.x = int(u0 + k * barrier.bx)
-		#barrier.position.y = int(v0 - k * barrier.by)
 		if i == targetindex:
 			barrier.get_child(0).modulate = Color(1, 0, 0)
 		else:
 			barrier.get_child(0).modulate = Color(0, 0, 1)
-	#pygame.draw.circle(screen, bcol, (int(u0 + k * barrier[0]), int(v0 - k * barrier[1])), int(k * BARRIERRADIUS), 0)
 
 
 # Function to predict new robot position based on current pose and velocity controls
@@ -190,4 +200,17 @@ func calculateClosestObstacleDistance(x, y):
 				closestdist = dist
 	return closestdist
 
+func moveBarriers(dt):
+	for barrier in barriers:
+		barrier.bx += barrier.vx * dt
+		if (barrier.bx < PLAYFIELDCORNERS[0]):
+			barrier.vx = -barrier.vx
+		if (barrier.bx > PLAYFIELDCORNERS[2]):
+			barrier.vx = -barrier.vx
+		
+		barrier.by += barrier.vy * dt
+		if (barrier.by < PLAYFIELDCORNERS[1]):
+			barrier.vy = -barrier.vy
+		if (barrier.by > PLAYFIELDCORNERS[3]):
+			barrier.vy = -barrier.vy
 
